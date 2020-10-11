@@ -4,6 +4,6 @@
 
 ## Ordbox
 
-My static site with a personal set of javascript data structures,fonctions and ES2015 features commonly used in web development.
+My static site with a personal set of javascript data structures, functions and ES2015 features commonly used in web development.
 
 The repository is deployed with netlify on [ordbox.netlify.app](https://ordbox.netlify.app/)
