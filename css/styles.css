@@ -1,0 +1,61 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	color: lightgray;
+	background-color: #171717;
+	margin: 0em;
+}
+
+h1 {
+	color: #ddd;
+	background: rgb(68, 68, 136);
+	background: linear-gradient(90deg, rgba(68, 68, 136, 1) 0%, rgb(58, 126, 204) 100%);
+	margin: 0em;
+	padding-left: 0.3em;
+	padding-top: 0.2em;
+}
+
+i {
+	margin: 0.5em;
+}
+
+p {
+	font-family: monospace;
+	font-size: 1.1em;
+	margin: 2em;
+}
+
+table {
+	margin: 1.5em;
+	border: 0em;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: #333344;
+	padding: 0.5em 0.7em 0.5em 0.7em;
+	text-align: left;
+	border-bottom: 0px solid black;
+}
+
+td {
+	padding: 0.2em 0.5em 0.2em 0.5em;
+	font-family: monospace;
+	font-size: 1.1em;
+	padding: 1em;
+}
+
+tr:nth-child(even) {
+	background-color: #202020;
+}
+tr:nth-child(odd) {
+	background-color: #171717;
+}
+tr:hover {
+	background-color: #2e2e2e;
+}
+.codeblock {
+	display: inline-block;
+	margin: 0em 1.5em;
+	padding: 0.5em;
+	background-color: #272829;
+}
