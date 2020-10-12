@@ -1,0 +1,100 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Javascript Sandbox</title>
+  <meta name="description" content="Javascript sandbox">
+  <meta name="author" content="Ordy">
+  <link rel="stylesheet" href="css/styles.css?v=4.0">
+  <script src="js/async.js" async></script>
+  <script src="js/layout.js" async></script>
+</head>
+
+<body>
+  <div class="topnav" id="myTopnav">
+    <a href="index.html">Data</a>
+    <a href="async.html" class="active">Async</a>
+    <a href="javascript:void(0);" class="icon" onclick="navFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <div>
+    <h1>Promise</h1>
+    <div class="codeblock">
+      const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {<br>
+      &emsp;true ? setTimeout(() => resolutionFunc("SUCCESS"), 3000) : setTimeout(() => rejectionFunc("FAIL"), 3000);<br>
+      &emsp;console.log("testing done");<br>
+      });
+    </div>
+    <div>
+      <br>
+      <button onClick="run()">Console Log</button>
+    </div>
+    <div class="section">
+      <div class="fn-code">
+        test = async () => {<br>
+        &emsp;console.log("testing Promise");<br>
+        &emsp;await promiseA.then(x => { console.log(x)}).catch(e => console.log(e));<br>
+        }
+      </div>
+      <div class="fn-output">
+        testing Promise<br>
+        SUCCESS<br>
+        testing done<br>
+      </div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+    <div class="section">
+      <div class="fn-code">code</div>
+      <div class="fn-output">output</div>
+    </div>
+</body>
+
+</html>
