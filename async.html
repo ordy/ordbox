@@ -6,8 +6,10 @@
   <meta name="description" content="Javascript sandbox">
   <meta name="author" content="Ordy">
   <link rel="stylesheet" href="css/styles.css?v=4.0">
+  <link rel="stylesheet" href="css/prism.css">
   <script src="js/async.js" async></script>
   <script src="js/layout.js" async></script>
+  <script src="js/prism.js"></script>
 </head>
 
 <body>
@@ -20,80 +22,142 @@
   </div>
   <div>
     <h1>Promise</h1>
-    <div class="codeblock">
-      const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {<br>
-      &emsp;true ? setTimeout(() => resolutionFunc("SUCCESS"), 3000) : setTimeout(() => rejectionFunc("FAIL"), 3000);<br>
-      &emsp;console.log("testing done");<br>
-      });
+    <div class="codeblock language-javascript">
+      <pre><code>const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {
+  true 
+  ? setTimeout(() => resolutionFunc("SUCCESS"), 3000) 
+  : setTimeout(() => rejectionFunc("FAIL"), 3000);
+  console.log("testing done");
+});</code></pre>
     </div>
     <div>
       <br>
       <button onClick="run()">Console Log</button>
     </div>
     <div class="section">
-      <div class="fn-code">
-        test = async () => {<br>
-        &emsp;console.log("testing Promise");<br>
-        &emsp;await promiseA.then(x => { console.log(x)}).catch(e => console.log(e));<br>
-        }
+      <div class="fn-code language-javascript">
+        <pre><code>async function function1() {
+  console.log("Function 1");
+  console.log("--- Start ---");
+  await promiseA.then(x => { 
+    console.log(x)
+  }).catch(e => console.log("Failed with msg: ", e));
+  console.log("--- End ---");
+}</code></pre>
       </div>
       <div class="fn-output">
-        testing Promise<br>
-        SUCCESS<br>
-        testing done<br>
+        <pre>
+<code>
+Function 1
+--- Start ---
+SUCCESS
+--- End ---
+</code>
+        </pre>
       </div>
     </div>
     <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
+      <div class="fn-code language-javascript">
+        <pre><code>function2 = async () => {
+  console.log("Function 2");
+  console.log("--- Start ---");
+  await promiseA.then(x => { 
+    console.log(x)
+  }).catch(e => console.log("Failed with msg: ", e));
+  console.log("--- End ---");
+}
+</code></pre>
+      </div>
+      <div class="fn-output">
+        <pre><code>
+</code></pre>
+      </div>
     </div>
     <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
+      <div class="fn-code language-javascript">
+        <pre><code>function3 = async () => {
+  console.log("Function 3");
+  console.log("--- Start ---");
+  await promiseA.then(x => { 
+    console.log(x)
+  }).catch(e => 
+    console.log("Failed with msg: ", e)
+  ).finally(console.log("Finally code here"));
+  console.log("--- End ---");
+};
+</code></pre>
+      </div>
+      <div class="fn-output">
+        <pre><code>
+</code></pre>
+      </div>
     </div>
     <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
+      <div class="fn-code language-javascript">
+        <pre><code>function4 = () => {
+  console.log("Function 4");
+  console.log("--- Start ---");
+  promiseA.then(x => { 
+    console.log(x)
+  }).catch(e => console.log("Failed with msg: ", e));
+  console.log("--- End ---");
+};
+</code></pre>
+      </div>
+      <div class="fn-output">
+        <pre><code>
+</code></pre>
+      </div>
     </div>
     <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
+      <div class="fn-code language-javascript">
+        <pre><code>function5 = async () => {
+  console.log("Function 5");
+  console.log("--- Start ---");
+  await promiseA
+  .then(x => x+' -> CALL1')
+  .then(y => y+' -> CALL2')
+  .then(z => z+' -> CALL3')
+  .then(res => console.log(res))
+  console.log("--- End ---");
+};
+</code></pre>
+      </div>
+      <div class="fn-output">
+        <pre><code>
+</code></pre>
+      </div>
     </div>
     <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
+      <div class="fn-code language-javascript">
+        <pre><code>function6 = async () => {
+  console.log("Function 6");
+  console.log("--- Start ---");
+  const pass = true;
+  await promiseA
+  .then(a =>  pass ? a+' -> CALL1' : Promise.reject('Call A err'))
+  .then(b => !pass ? b+' -> CALL2' : Promise.reject('Call B err'))
+  .then(c =>  pass ? c+' -> CALL3' : Promise.reject('CAll C err'))
+  .then(res => console.log(res))
+  .catch(err => console.log("Failed with msg: ", err));
+  console.log("--- End ---");
+};
+</code></pre>
+      </div>
+      <div class="fn-output">
+        <pre><code>
+</code></pre>
+      </div>
     </div>
     <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
-    </div>
-    <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
-    </div>
-    <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
-    </div>
-    <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
-    </div>
-    <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
-    </div>
-    <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
-    </div>
-    <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
-    </div>
-    <div class="section">
-      <div class="fn-code">code</div>
-      <div class="fn-output">output</div>
+      <div class="fn-code language-javascript">
+        <pre><code>
+</code></pre>
+      </div>
+      <div class="fn-output">
+        <pre><code>
+</code></pre>
+      </div>
     </div>
 </body>
 
