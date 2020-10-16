@@ -6,6 +6,7 @@
   <meta name="description" content="Javascript sandbox">
   <meta name="author" content="Ordy">
   <link rel="stylesheet" href="css/styles.css?v=4.0">
+  <link rel="icon" type="image/ico" href="favicon.ico">
   <link rel="stylesheet" href="css/prism.css">
   <script src="js/async.js" async></script>
   <script src="js/layout.js" async></script>
@@ -20,23 +21,62 @@
       <i class="fa fa-bars"></i>
     </a>
   </div>
+
   <div>
-    <h1>Promise</h1>
-    <div class="codeblock language-javascript">
-      <pre><code>const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {
+    <h1>Callback</h1>
+    <div class="section">
+      <div class="fn-code language-javascript">
+        <pre><code>const functionCB1 = () => {
+  console.log("Function 1");
+  console.log("--- Start ---");
+  setTimeout(() => {
+    fetchValue(upperCaseName)
+  }, 3000);
+  console.log(">>> End of function 1");
+}
+
+fetchValue = (callback) => {
+  console.log(">>> Fetching data")
+  callback(navigator.oscpu);
+}
+
+upperCaseName = (res) => {
+  console.log(">>> Starting callback");
+  console.log("Your OS name:", res.toUpperCase());
+  console.log("--- End of Callback ---");
+}</code></pre>
+      </div>
+      <div class="fn-output">
+        <pre><code>
+</code></pre>
+      </div>
+    </div>
+
+    <div>
+      <h1>Promise</h1>
+      <div class="codeblock margin-1 language-javascript">
+        <pre><code>const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {
   true 
   ? setTimeout(() => resolutionFunc("SUCCESS"), 3000) 
   : setTimeout(() => rejectionFunc("FAIL"), 3000);
   console.log("testing done");
 });</code></pre>
-    </div>
-    <div>
-      <br>
-      <button onClick="run()">Console Log</button>
-    </div>
-    <div class="section">
-      <div class="fn-code language-javascript">
-        <pre><code>async function function1() {
+      </div>
+      <div class="margin-1">
+        <label for="fn-select">Console log:</label>
+        <select name="Function 1" id="fn-select">
+          <option value="1">Function 1</option>
+          <option value="2">Function 2</option>
+          <option value="3">Function 3</option>
+          <option value="4">Function 4</option>
+          <option value="5">Function 5</option>
+          <option value="6">Function 6</option>
+        </select>
+        <button onClick="run()">Run</button>
+      </div>
+      <div class="section">
+        <div class="fn-code language-javascript">
+          <pre><code>async function function1() {
   console.log("Function 1");
   console.log("--- Start ---");
   await promiseA.then(x => { 
@@ -44,9 +84,9 @@
   }).catch(e => console.log("Failed with msg: ", e));
   console.log("--- End ---");
 }</code></pre>
-      </div>
-      <div class="fn-output">
-        <pre>
+        </div>
+        <div class="fn-output">
+          <pre>
 <code>
 Function 1
 --- Start ---
@@ -54,11 +94,11 @@ SUCCESS
 --- End ---
 </code>
         </pre>
+        </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="fn-code language-javascript">
-        <pre><code>function2 = async () => {
+      <div class="section">
+        <div class="fn-code language-javascript">
+          <pre><code>function2 = async () => {
   console.log("Function 2");
   console.log("--- Start ---");
   await promiseA.then(x => { 
@@ -67,15 +107,15 @@ SUCCESS
   console.log("--- End ---");
 }
 </code></pre>
-      </div>
-      <div class="fn-output">
-        <pre><code>
+        </div>
+        <div class="fn-output">
+          <pre><code>
 </code></pre>
+        </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="fn-code language-javascript">
-        <pre><code>function3 = async () => {
+      <div class="section">
+        <div class="fn-code language-javascript">
+          <pre><code>function3 = async () => {
   console.log("Function 3");
   console.log("--- Start ---");
   await promiseA.then(x => { 
@@ -86,15 +126,15 @@ SUCCESS
   console.log("--- End ---");
 };
 </code></pre>
-      </div>
-      <div class="fn-output">
-        <pre><code>
+        </div>
+        <div class="fn-output">
+          <pre><code>
 </code></pre>
+        </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="fn-code language-javascript">
-        <pre><code>function4 = () => {
+      <div class="section">
+        <div class="fn-code language-javascript">
+          <pre><code>function4 = () => {
   console.log("Function 4");
   console.log("--- Start ---");
   promiseA.then(x => { 
@@ -103,15 +143,15 @@ SUCCESS
   console.log("--- End ---");
 };
 </code></pre>
-      </div>
-      <div class="fn-output">
-        <pre><code>
+        </div>
+        <div class="fn-output">
+          <pre><code>
 </code></pre>
+        </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="fn-code language-javascript">
-        <pre><code>function5 = async () => {
+      <div class="section">
+        <div class="fn-code language-javascript">
+          <pre><code>function5 = async () => {
   console.log("Function 5");
   console.log("--- Start ---");
   await promiseA
@@ -122,15 +162,15 @@ SUCCESS
   console.log("--- End ---");
 };
 </code></pre>
-      </div>
-      <div class="fn-output">
-        <pre><code>
+        </div>
+        <div class="fn-output">
+          <pre><code>
 </code></pre>
+        </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="fn-code language-javascript">
-        <pre><code>function6 = async () => {
+      <div class="section">
+        <div class="fn-code language-javascript">
+          <pre><code>function6 = async () => {
   console.log("Function 6");
   console.log("--- Start ---");
   const pass = true;
@@ -143,22 +183,22 @@ SUCCESS
   console.log("--- End ---");
 };
 </code></pre>
-      </div>
-      <div class="fn-output">
-        <pre><code>
+        </div>
+        <div class="fn-output">
+          <pre><code>
 </code></pre>
+        </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="fn-code language-javascript">
-        <pre><code>
+      <div class="section">
+        <div class="fn-code language-javascript">
+          <pre><code>
 </code></pre>
-      </div>
-      <div class="fn-output">
-        <pre><code>
+        </div>
+        <div class="fn-output">
+          <pre><code>
 </code></pre>
+        </div>
       </div>
-    </div>
 </body>
 
 </html>

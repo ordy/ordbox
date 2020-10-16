@@ -1,45 +1,78 @@
-run = () => {
-  function7();
+runCallback = () => {
+  functionCB1();
 }
 
-const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {
-  true ? setTimeout(() =>  resolutionFunc("SUCCESS"), 3000) : setTimeout(() => rejectionFunc("FAIL"), 3000);
-});
+runAsync = () => {
+  let fakeAPIcall = new Promise((resolutionFunc,rejectionFunc) => {
+    true ? setTimeout(() =>  resolutionFunc("SUCCESS"), 3000) 
+    : setTimeout(() => rejectionFunc("FAIL"), 3000);
+  });
+  fnIndex = document.getElementById("fn-select").value - 1;
+  functionList[fnIndex](fakeAPIcall);
+}
 
-// regular async function
-async function function1() {
+// callback function
+const functionCB1 = () => {
   console.log("Function 1");
   console.log("--- Start ---");
-  await promiseA.then(x => { console.log(x)}).catch(e => console.log("Failed with msg: ", e));
+  setTimeout(() => {
+    fetchValue(upperCaseName)
+  }, 3000);
+  console.log(">>> End of function 1");
+}
+fetchValue = (callback) => {
+  console.log(">>> Fetching data")
+  callback(navigator.oscpu);
+}
+upperCaseName = (res) => {
+  console.log(">>> Starting callback");
+  console.log("Your OS name:", res.toUpperCase());
+  console.log("--- End of Callback ---");
+}
+
+// regular async function
+async function functionP1(promiseA) {
+  console.log("Function 1");
+  console.log("--- Start ---");
+  await promiseA.then(x => {
+    console.log(x)
+  }).catch(e => console.log("Failed with msg: ", e));
   console.log("--- End ---");
 }
 
 // arrow async function
-function2 = async () => {
+const functionP2 = async (promiseA) => {
   console.log("Function 2");
   console.log("--- Start ---");
-  await promiseA.then(x => { console.log(x)}).catch(e => console.log("Failed with msg: ", e));
+  await promiseA.then(x => {
+    console.log(x)
+  }).catch(e => console.log("Failed with msg: ", e));
   console.log("--- End ---");
 };
 
 // then, catch, finally
-function3 = async () => {
+const functionP3 = async (promiseA) => {
   console.log("Function 3");
   console.log("--- Start ---");
-  await promiseA.then(x => { console.log(x)}).catch(e => console.log("Failed with msg: ", e)).finally(console.log("Finally code here"));
+  await promiseA.then(x => {
+    console.log(x)
+  }).catch(e => console.log("Failed with msg: ", e)
+  ).finally(console.log("Finally code here"));
   console.log("--- End ---");
 };
 
 // missing async
-function4 = () => {
+const functionP4 = (promiseA) => {
   console.log("Function 4");
   console.log("--- Start ---");
-  promiseA.then(x => { console.log(x)}).catch(e => console.log("Failed with msg: ", e));
+  promiseA.then(x => {
+    console.log(x)
+  }).catch(e => console.log("Failed with msg: ", e));
   console.log("--- End ---");
 };
 
 // chained promises
-function5 = async () => {
+const functionP5 = async (promiseA) => {
   console.log("Function 5");
   console.log("--- Start ---");
   await promiseA
@@ -47,11 +80,12 @@ function5 = async () => {
   .then(y => y+' -> CALL2')
   .then(z => z+' -> CALL3')
   .then(res => console.log(res))
+  .catch(err => console.log("Failed with msg: ", err));
   console.log("--- End ---");
 };
 
 // rejected promise chain
-function6 = async () => {
+const functionP6 = async (promiseA) => {
   console.log("Function 6");
   console.log("--- Start ---");
   const pass = true;
@@ -63,32 +97,16 @@ function6 = async () => {
   .catch(err => console.log("Failed with msg: ", err));
   console.log("--- End ---");
 };
-
 // Note:
 // a catch will handle everything above
 // multiple catch can be used per chain
 // a catch can throw an error to another catch
 
- 
-// callback function
-function7 = () => {
-  console.log("Function 6");
-  console.log("--- Start ---");
-  let os = 'no_value';
-  const res = fetchValue(upperCaseName, os);
-  console.log("Your OS name: ", res);
-  console.log("--- End ---");
-}
-
-fetchValue = (callback, os) => {
-  console.log('Calling fetchValue()')
-  setTimeout(() => os = navigator.oscpu, 3000);
-  return callback(os);
-}
-
-upperCaseName = (str) => {
-  console.log('Calling upperCaseName()');
-  str += '_TEST';
-  console.log(str);
-  return str;
-}
+const functionList = [
+  functionP1,
+  functionP2,
+  functionP3,
+  functionP4,
+  functionP5,
+  functionP6
+];
