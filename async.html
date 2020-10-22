@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/styles.css?v=4.0">
   <link rel="icon" type="image/ico" href="favicon.ico">
   <link rel="stylesheet" href="css/prism.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="js/async.js" async></script>
   <script src="js/layout.js" async></script>
   <script src="js/prism.js"></script>
@@ -15,11 +16,14 @@
 
 <body>
   <div class="topnav" id="myTopnav">
-    <a href="index.html">Data</a>
-    <a href="async.html" class="active">Async</a>
-    <a href="javascript:void(0);" class="icon" onclick="navFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
+    <div class="ico-menu-bar">
+      <img src="./assets/logo.png" alt="site-logo">
+      <a href="javascript:void(0);" class="icon" onclick="navFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    <a href="./index.html">Data</a>
+    <a href="./async.html" class="active">Async</a>
   </div>
 
   <div>
@@ -54,7 +58,7 @@ upperCaseName = (res) => {
 
     <div>
       <h1>Promise</h1>
-      <div class="codeblock margin-1 language-javascript">
+      <div class="codeblock margin-3 language-javascript">
         <pre><code>const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {
   true 
   ? setTimeout(() => resolutionFunc("SUCCESS"), 3000) 
@@ -62,7 +66,7 @@ upperCaseName = (res) => {
   console.log("testing done");
 });</code></pre>
       </div>
-      <div class="margin-1">
+      <div style="margin-left: 2em">
         <label for="fn-select">Console log:</label>
         <select name="Function 1" id="fn-select">
           <option value="1">Function 1</option>
