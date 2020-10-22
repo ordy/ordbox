@@ -8,12 +8,17 @@ h1 {
 	color: #ddd;
 	background: #8155ba;
 	background: linear-gradient(90deg, #8155ba 0%, #1e62a1 100%);
-	margin: 0em;
+	margin: 0em 0em 1em 0em;
 	padding-left: 0.3em;
 	padding-top: 0.2em;
 }
+h4 {
+	margin: 0 0 0 2em;
+	font-style: italic;
+	color: #707072;
+}
 i {
-	margin: 0.5em;
+	margin: 0em 0em 0.5em 0.5em;
 }
 p {
 	font-family: monospace;
@@ -53,7 +58,7 @@ tr:hover {
 	margin-left: 2em;
 }
 .section {
-	padding: 2em 2em 2em 2em;
+	padding: 0.5em 2em 2em 2em;
 	width: 70%;
 	display: inline-grid;
 	grid-template-columns: 75% 25%;
@@ -70,7 +75,7 @@ tr:hover {
 	padding: 1em;
 }
 .margin-3 {
-	margin: 3em;
+	margin: 0.5em 3em 3em 3em;
 }
 .nav-container {
 	height: 3em;
