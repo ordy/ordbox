@@ -28,6 +28,20 @@
 
   <div>
     <h1>Callback</h1>
+    <div style="margin: 2em 2em 1em 2em">
+      <label for="fn-select">console.log(</label>
+      <select name="Function 1" id="fn-select">
+        <option value="1">Callback Function</option>
+        <option value="2">Function P1</option>
+        <option value="3">Function P2</option>
+        <option value="4">Function P3</option>
+        <option value="5">Function P4</option>
+        <option value="6">Function P5</option>
+        <option value="7">Function P6</option>
+      </select>
+      <span>)</span>
+      <button onClick="run()">Run</button>
+    </div>
     <div class="section">
       <div class="fn-code language-javascript">
         <pre><code>const functionCB1 = () => {
@@ -51,13 +65,22 @@ upperCaseName = (res) => {
 }</code></pre>
       </div>
       <div class="fn-output">
-        <pre><code>
+        <pre>
+<code>
+Function 1
+--- Start ---
+>>> End of function 1
+>>> Fetching data
+>>> Starting callback
+Your OS name: LINUX X86_64
+--- End of Callback ---
 </code></pre>
       </div>
     </div>
 
     <div>
       <h1>Promise</h1>
+      <h4>// fake async call</h4>
       <div class="codeblock margin-3 language-javascript">
         <pre><code>const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {
   true 
@@ -66,22 +89,12 @@ upperCaseName = (res) => {
   console.log("testing done");
 });</code></pre>
       </div>
-      <div style="margin-left: 2em">
-        <label for="fn-select">Console log:</label>
-        <select name="Function 1" id="fn-select">
-          <option value="1">Function 1</option>
-          <option value="2">Function 2</option>
-          <option value="3">Function 3</option>
-          <option value="4">Function 4</option>
-          <option value="5">Function 5</option>
-          <option value="6">Function 6</option>
-        </select>
-        <button onClick="run()">Run</button>
-      </div>
+
+      <h4>// regular async function</h4>
       <div class="section">
         <div class="fn-code language-javascript">
-          <pre><code>async function function1() {
-  console.log("Function 1");
+          <pre><code>async function functionP1() {
+  console.log("Function P1");
   console.log("--- Start ---");
   await promiseA.then(x => { 
     console.log(x)
@@ -100,10 +113,11 @@ SUCCESS
         </pre>
         </div>
       </div>
+      <h4>// arrow async function</h4>
       <div class="section">
         <div class="fn-code language-javascript">
-          <pre><code>function2 = async () => {
-  console.log("Function 2");
+          <pre><code>functionP2 = async () => {
+  console.log("Function P2");
   console.log("--- Start ---");
   await promiseA.then(x => { 
     console.log(x)
@@ -113,14 +127,20 @@ SUCCESS
 </code></pre>
         </div>
         <div class="fn-output">
-          <pre><code>
+          <pre>
+<code>
+Function 1
+--- Start ---
+SUCCESS
+--- End ---
 </code></pre>
         </div>
       </div>
+      <h4>// then, catch, finally</h4>
       <div class="section">
         <div class="fn-code language-javascript">
-          <pre><code>function3 = async () => {
-  console.log("Function 3");
+          <pre><code>functionP3 = async () => {
+  console.log("Function P3");
   console.log("--- Start ---");
   await promiseA.then(x => { 
     console.log(x)
@@ -132,14 +152,21 @@ SUCCESS
 </code></pre>
         </div>
         <div class="fn-output">
-          <pre><code>
+          <pre>
+<code>
+Function 3
+--- Start ---
+Finally code here
+SUCCESS
+--- End ---
 </code></pre>
         </div>
       </div>
+      <h4>// missing async</h4>
       <div class="section">
         <div class="fn-code language-javascript">
-          <pre><code>function4 = () => {
-  console.log("Function 4");
+          <pre><code>functionP4 = () => {
+  console.log("Function P4");
   console.log("--- Start ---");
   promiseA.then(x => { 
     console.log(x)
@@ -149,14 +176,20 @@ SUCCESS
 </code></pre>
         </div>
         <div class="fn-output">
-          <pre><code>
+          <pre>
+<code>
+Function 4
+--- Start ---
+--- End ---
+SUCCESS
 </code></pre>
         </div>
       </div>
+      <h4>// chained promises</h4>
       <div class="section">
         <div class="fn-code language-javascript">
-          <pre><code>function5 = async () => {
-  console.log("Function 5");
+          <pre><code>functionP5 = async () => {
+  console.log("Function P5");
   console.log("--- Start ---");
   await promiseA
   .then(x => x+' -> CALL1')
@@ -168,14 +201,20 @@ SUCCESS
 </code></pre>
         </div>
         <div class="fn-output">
-          <pre><code>
+          <pre>
+<code>
+Function 5
+--- Start ---
+SUCCESS -> CALL1 -> CALL2 -> CALL3
+--- End ---
 </code></pre>
         </div>
       </div>
+      <h4>// rejected promise chain</h4>
       <div class="section">
         <div class="fn-code language-javascript">
-          <pre><code>function6 = async () => {
-  console.log("Function 6");
+          <pre><code>functionP6 = async () => {
+  console.log("Function P6");
   console.log("--- Start ---");
   const pass = true;
   await promiseA
@@ -189,10 +228,15 @@ SUCCESS
 </code></pre>
         </div>
         <div class="fn-output">
-          <pre><code>
+          <pre>
+<code>
+Function 6
+--- Start ---
+Failed with msg:  Call B err
+--- End ---
 </code></pre>
         </div>
-      </div>
+        <!-- </div>
       <div class="section">
         <div class="fn-code language-javascript">
           <pre><code>
@@ -201,7 +245,7 @@ SUCCESS
         <div class="fn-output">
           <pre><code>
 </code></pre>
-        </div>
+        </div> -->
       </div>
 </body>
 

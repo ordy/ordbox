@@ -1,18 +1,14 @@
-runCallback = () => {
-  functionCB1();
-}
-
-runAsync = () => {
+run = () => {
   let fakeAPIcall = new Promise((resolutionFunc,rejectionFunc) => {
     true ? setTimeout(() =>  resolutionFunc("SUCCESS"), 3000) 
     : setTimeout(() => rejectionFunc("FAIL"), 3000);
   });
   fnIndex = document.getElementById("fn-select").value - 1;
-  functionList[fnIndex](fakeAPIcall);
+  fnIndex === 0 ? functionList[fnIndex]() : functionList[fnIndex](fakeAPIcall);
 }
 
 // callback function
-const functionCB1 = () => {
+const functionCB = () => {
   console.log("Function 1");
   console.log("--- Start ---");
   setTimeout(() => {
@@ -103,6 +99,7 @@ const functionP6 = async (promiseA) => {
 // a catch can throw an error to another catch
 
 const functionList = [
+  functionCB,
   functionP1,
   functionP2,
   functionP3,
